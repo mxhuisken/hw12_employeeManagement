@@ -14,9 +14,9 @@ const updateEmployee = require('./scripts/updateEmployee')
 const updateEmpMan = require('./scripts/updateEmpMan')
 const viewByManager = require('./scripts/viewByManager');
 const viewByDepartment = require('./scripts/viewByDepartment')
-const delDepartment = require('./scripts/delDepartment');
-const delEmployee = require('./scripts/delEmployee');
-const delRole = require('./scripts/delRole');
+const delDepartment = require('./scripts/deleteDepartment');
+const delEmployee = require('./scripts/deleteEmployee');
+const delRole = require('./scripts/deleteRole');
 const viewDepartSalary = require('./scripts/viewDepartSalary')
 
 // Refactor to async / await
@@ -114,19 +114,19 @@ async function userChoice() {
 
         case `Delete a Department`:
             console.log(`You picked: `, choice)
-            const delDep = await delDepartment();
+            const delDep = await deleteDepartment();
             console.log(delDep);
             return userChoice();
 
         case `Delete a Role`:
             console.log(`You picked: `, choice)
-            const deleteRole = await delRole();
+            const deleteRole = await deleteRole();
             console.log(deleteRole);
             return userChoice();
 
         case `Delete an Employee`:
             console.log(`You picked: `, choice)
-            const delEmp = await delEmployee();
+            const delEmp = await deleteEmployee();
             console.log(delEmp);
             return userChoice();
 
