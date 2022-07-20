@@ -1,0 +1,29 @@
+{
+  "name": "hw12_employeemanagement",
+  "version": "1.0.0",
+  "description": "## Table of Contents 📚",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mxhuisken/hw12_employeeManagement.git"
+  },
+  "author": "Marina Huisken",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mxhuisken/hw12_employeeManagement/issues"
+  },
+  "homepage": "https://github.com/mxhuisken/hw12_employeeManagement#readme",
+  "dependencies": {
+    "nodemon": "^2.0.19",
+    "console.table": "^0.10.0",
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1",
+    "inquirer": "^8.2.4",
+    "mysql2": "^2.3.3",
+    "sequelize": "^6.20.1"
+  }
+}
