@@ -3,28 +3,28 @@ const inquirer = require('inquirer');
 const viewAllDepartments = require('./viewAllDepartments');
 
 
-// Delete Department
-async function deleteDepartment() {
+// Get Department IDs
+async function viewDepartSalary() {
     try {
         const allDepartments = await viewAllDepartments();
         const { department_id } = await inquirer.prompt([
             {
                 type: 'list',
                 name: 'department_id',
-                message: 'Select Department To Delete:',
+                message: 'Select Department Total Salary:',
                 choices: allDepartments[0].map((d) => ({
                     name: d.department_name,
                     value: d.department_id,
                 })),
             }
         ]);
-        const delDep = await db.promise().query(`DELETE FROM departments WHERE department_id = ${department_id}`);
-        return `Department has been deleted...`;
+
+        // Get Department Total Salary
+        const departSalary = await db.promise().query(`SELECT SUM(role_salary) AS total_salary FROM roles WHERE department_id = ${department_id}`);
+        return departSalary;
     } catch (err) {
         console.log(`Opps! Something went wrong...`, err)
     }
 }
 
-
-// Export
-module.exports = deleteDepartment;
+module.exports = viewDepartSalary;

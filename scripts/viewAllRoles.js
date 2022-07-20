@@ -1,4 +1,3 @@
-// Import Modules
 const db = require('../config/connection');
 
 
