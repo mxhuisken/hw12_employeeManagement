@@ -14,10 +14,10 @@ const updateEmployee = require('./scripts/updateEmployee')
 const updateEmpMan = require('./scripts/updateEmpMan')
 const viewByManager = require('./scripts/viewByManager');
 const viewByDepartment = require('./scripts/viewByDepartment')
-const delDepartment = require('./scripts/deleteDepartment');
-const delEmployee = require('./scripts/deleteEmployee');
-const delRole = require('./scripts/deleteRole');
-const viewDepartSalary = require('./scripts/viewDepartSalary')
+const deleteDepartment = require('./scripts/deleteDepartment');
+const deleteEmployee = require('./scripts/deleteEmployee');
+const deleteRole = require('./scripts/deleteRole');
+const viewDepartSalary = require('./scripts/viewDeptSalary')
 
 // Refactor to async / await
 async function userChoice() {
@@ -114,8 +114,8 @@ async function userChoice() {
 
         case `Delete a Department`:
             console.log(`You picked: `, choice)
-            const delDep = await deleteDepartment();
-            console.log(delDep);
+            const deleteDep = await deleteDepartment();
+            console.log(deleteDep);
             return userChoice();
 
         case `Delete a Role`:
@@ -126,8 +126,8 @@ async function userChoice() {
 
         case `Delete an Employee`:
             console.log(`You picked: `, choice)
-            const delEmp = await deleteEmployee();
-            console.log(delEmp);
+            const deleteEmp = await deleteEmployee();
+            console.log(deleteEmp);
             return userChoice();
 
         default:
@@ -136,7 +136,6 @@ async function userChoice() {
 
     }
 }
-
 
 
 function init() {
