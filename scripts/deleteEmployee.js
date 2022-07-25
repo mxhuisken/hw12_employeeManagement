@@ -18,7 +18,7 @@ async function deleteEmployee() {
                 })),
             }
         ]);
-        const delEmp = await db.promise().query(`DELETE FROM employees WHERE id = ${employee_id}`);
+        const delEmp = await db.promise().query(`DELETE FROM employee WHERE id = ${employee_id}`);
         return `Employee has been deleted...`;
     } catch (err) {
         console.log(`Opps! Something went wrong...`, err)

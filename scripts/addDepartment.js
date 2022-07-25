@@ -13,7 +13,7 @@ async function addDepartment() {
         ])
         
         console.log(department_name)
-        await db.promise().query(`INSERT INTO departments (department_name) VALUES (?)`, [department_name])
+        await db.promise().query(`INSERT INTO department (name) VALUES (?)`, [department_name])
         return `${department_name} has been added to the database`
     } catch (err) {
         console.log(`Opps! Something went wrong...`, err)

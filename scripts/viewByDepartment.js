@@ -13,16 +13,16 @@ async function viewByDepartment() {
                 name: 'department_id',
                 message: 'Select Department To View All Employees:',
                 choices: allDepartments[0].map((d) => ({
-                    name: d.department_name,
-                    value: d.department_id,
+                    name: d.name,
+                    value: d.id,
                 })),
             }
         ]);
-        const departEmployees = await db.promise().query(`SELECT departments.department_name, roles.department_id, employees.first_name, employees.last_name, employees.role_id, roles.role_title
-    FROM ((employees
-    INNER JOIN roles ON employees.role_id = roles.role_id)
-    INNER JOIN departments ON roles.department_id = departments.department_id) 
-    WHERE departments.department_id = ${department_id}`);
+        const departEmployees = await db.promise().query(`SELECT department.name, role.department_id, employee.first_name, employee.last_name, employee.role_id, role.role_title
+    FROM ((employee
+    INNER JOIN role ON employee.role_id = role.role_id)
+    INNER JOIN department ON role.department_id = department.id) 
+    WHERE department.id = ${department_id}`);
 
         return departEmployees;
     } catch (err) {

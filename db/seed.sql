@@ -1,4 +1,4 @@
-use employees;
+use employees_db;
 
 INSERT INTO department
     (name)
@@ -9,7 +9,7 @@ VALUES
     ('Legal');
 
 INSERT INTO role
-    (title, salary, department_id)
+    (role_title, role_salary, department_id)
 VALUES
     ('Sales Lead', 100000, 1),
     ('Salesperson', 80000, 1),

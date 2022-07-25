@@ -18,7 +18,7 @@ async function deleteRole() {
                 })),
             }
         ]);
-        const delRole = await db.promise().query(`DELETE FROM roles WHERE role_id = ${role_id}`);
+        const delRole = await db.promise().query(`DELETE FROM role WHERE role_id = ${role_id}`);
         return `Role has been deleted...`;
     } catch (err) {
         console.log(`Opps! Something went wrong...`, err)

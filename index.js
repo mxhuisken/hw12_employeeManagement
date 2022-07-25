@@ -120,8 +120,8 @@ async function userChoice() {
 
         case `Delete a Role`:
             console.log(`You picked: `, choice)
-            const deleteRole = await deleteRole();
-            console.log(deleteRole);
+            const deleteRol = await deleteRole();
+            console.log(deleteRol);
             return userChoice();
 
         case `Delete an Employee`:

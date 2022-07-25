@@ -5,7 +5,7 @@ const inquirer = require('inquirer');
 // Get Manager IDs
 async function viewByManager() {
     try {
-        const allManagers = await db.promise().query('SELECT first_name, last_name, id FROM employees WHERE (id IN (SELECT manager_id FROM employees));');
+        const allManagers = await db.promise().query('SELECT first_name, last_name, id FROM employee WHERE (id IN (SELECT manager_id FROM employee));');
 
         const managerIDs = allManagers[0].map((m) => ({
             name: `${m.first_name} ${m.last_name}`,
@@ -21,7 +21,7 @@ async function viewByManager() {
 
             }
         ]);
-        const viewManEmployees = await db.promise().query(`SELECT * FROM employees WHERE manager_id = ${manager_id}`);
+        const viewManEmployees = await db.promise().query(`SELECT * FROM employee WHERE manager_id = ${manager_id}`);
         return viewManEmployees;
     } catch (err) {
         console.log(`Opps! Something went wrong...`, err)

@@ -13,12 +13,12 @@ async function deleteDepartment() {
                 name: 'department_id',
                 message: 'Select Department To Delete:',
                 choices: allDepartments[0].map((d) => ({
-                    name: d.department_name,
-                    value: d.department_id,
+                    name: d.name,
+                    value: d.id,
                 })),
             }
         ]);
-        const delDep = await db.promise().query(`DELETE FROM departments WHERE department_id = ${department_id}`);
+        const delDep = await db.promise().query(`DELETE FROM department WHERE id = ${department_id}`);
         return `Department has been deleted...`;
     } catch (err) {
         console.log(`Opps! Something went wrong...`, err)

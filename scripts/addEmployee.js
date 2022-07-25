@@ -6,7 +6,7 @@ const inquirer = require('inquirer');
 async function addEmployee() {
     try {
         // List Possible Managers
-        const [manager] = await db.promise().query("SELECT id, first_name, last_name FROM employees")
+        const [manager] = await db.promise().query("SELECT id, first_name, last_name FROM employee")
         const managerChoices = manager.map(man => {
             return {
                 name: `${man.first_name} ${man.last_name}`,
@@ -14,7 +14,7 @@ async function addEmployee() {
             }
         })
         // List Possible Roles
-        const [roles] = await db.promise().query(`SELECT role_id, role_title FROM roles`)
+        const [roles] = await db.promise().query(`SELECT role_id, role_title FROM role`)
         const choices = roles.map(role => {
             return {
                 name: role.role_title,
@@ -47,7 +47,7 @@ async function addEmployee() {
             }
         ])
         
-        await db.promise().query(`INSERT INTO employees (first_name, last_name, role_id, manager_id) VALUES (?, ?, ?, ?)`, [first_name, last_name, role_id, manager_id])
+        await db.promise().query(`INSERT INTO employee (first_name, last_name, role_id, manager_id) VALUES (?, ?, ?, ?)`, [first_name, last_name, role_id, manager_id])
         return `${first_name} ${last_name} has been added to the database`
     } catch (err) {
         console.log(`Opps! Something went wrong...`, err)

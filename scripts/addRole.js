@@ -6,11 +6,11 @@ const inquirer = require('inquirer');
 async function addRole() {
     try {
         // List Possible Departments
-        const [department] = await db.promise().query("SELECT * FROM departments")
+        const [department] = await db.promise().query("SELECT * FROM department")
         const departChoices = department.map(dep => {
             return {
-                name: dep.department_name,
-                value: dep.department_id
+                name: dep.name,
+                value: dep.id
             }
         })
 
@@ -33,7 +33,7 @@ async function addRole() {
             }
         ])
         // Add Role
-        await db.promise().query(`INSERT INTO roles (role_title, role_salary, department_id) VALUES (?, ?, ?)`, [role_title, role_salary, department_id])
+        await db.promise().query(`INSERT INTO role (role_title, role_salary, department_id) VALUES (?, ?, ?)`, [role_title, role_salary, department_id])
         return `${role_title} has been added to the database`
     } catch (err) {
         console.log(`Opps! Something went wrong...`, err)

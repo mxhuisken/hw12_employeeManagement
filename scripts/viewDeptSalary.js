@@ -13,14 +13,14 @@ async function viewDepartSalary() {
                 name: 'department_id',
                 message: 'Select Department Total Salary:',
                 choices: allDepartments[0].map((d) => ({
-                    name: d.department_name,
-                    value: d.department_id,
+                    name: d.name,
+                    value: d.id,
                 })),
             }
         ]);
 
         // Get Department Total Salary
-        const departSalary = await db.promise().query(`SELECT SUM(role_salary) AS total_salary FROM roles WHERE department_id = ${department_id}`);
+        const departSalary = await db.promise().query(`SELECT SUM(role_salary) AS total_salary FROM role WHERE department_id = ${department_id}`);
         return departSalary;
     } catch (err) {
         console.log(`Opps! Something went wrong...`, err)

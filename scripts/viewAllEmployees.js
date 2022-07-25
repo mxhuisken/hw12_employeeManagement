@@ -5,10 +5,10 @@ const db = require('../config/connection');
 // job titles, departments, salaries, and managers
 async function viewAllEmployees() {
     try {
-        const allEmployees = await db.promise().query(`SELECT employees.id, employees.first_name, employees.last_name, roles.role_title, departments.department_name, roles.role_salary, employees.manager_id 
-    FROM ((employees 
-    INNER JOIN roles ON employees.role_id = roles.role_id) 
-    INNER JOIN departments ON roles.department_id = departments.department_id)`);
+        const allEmployees = await db.promise().query(`SELECT employee.id, employee.first_name, employee.last_name, role.role_title, department.name, role.role_salary, employee.manager_id 
+    FROM ((employee 
+    INNER JOIN role ON employee.role_id = role.role_id) 
+    INNER JOIN department ON role.department_id = department.id)`);
         return allEmployees;
     } catch (err) {
         console.log(`Opps! Something went wrong...`, err)

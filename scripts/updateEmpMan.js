@@ -6,7 +6,7 @@ const inquirer = require('inquirer');
 async function updateEmpMan() {
     try {
         // List Possible Employees
-        const [employee] = await db.promise().query("SELECT id, first_name, last_name FROM employees")
+        const [employee] = await db.promise().query("SELECT id, first_name, last_name FROM employee")
         const employeeChoices = employee.map(emp => {
             return {
                 name: `${emp.first_name} ${emp.last_name}`,
@@ -14,7 +14,7 @@ async function updateEmpMan() {
             }
         })
         // List Possible Managers
-        const [manager] = await db.promise().query("SELECT id, first_name, last_name FROM employees")
+        const [manager] = await db.promise().query("SELECT id, first_name, last_name FROM employee")
         const managerChoices = manager.map(man => {
             return {
                 name: `${man.first_name} ${man.last_name}`,
@@ -36,7 +36,7 @@ async function updateEmpMan() {
             }
         ])
         // Update Employee's Manager
-        await db.promise().query(`UPDATE employees SET manager_id = ? WHERE id = ?`, [manager_id, employee_id])
+        await db.promise().query(`UPDATE employee SET manager_id = ? WHERE id = ?`, [manager_id, employee_id])
         return `Employee's Manager has been updated...`
     } catch (err) {
         console.log(`Opps! Something went wrong...`, err)
